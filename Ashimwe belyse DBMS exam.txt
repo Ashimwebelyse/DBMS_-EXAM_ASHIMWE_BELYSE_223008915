@@ -1,0 +1,184 @@
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 19
+Server version: 8.3.0 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+QUESTION 1.
+
+mysql> crete database client_master;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'crete database client_master' at line 1
+mysql> create database client_master;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> create table client_master (clientNO int(12)not null,name varchar(123)not null,adress varchar(123),city varchar(123)not null,state varchar(123)not null,bal_due varchar (123)not null);
+ERROR 1046 (3D000): No database selected
+mysql> use client_master;
+Database changed
+mysql> create table client_master (clientNO int(12)not null,name varchar(123)not null,adress varchar(123),city varchar(123)not null,state varchar(123)not null,bal_due varchar (123)not null);
+Query OK, 0 rows affected, 1 warning (0.02 sec)
+
+mysql> insert into client_master values('C001','anna','huye','butare','rwanda','10000'),('C012','benitha','kabare','ngoma','rwanda','5000'),('C123','eddy','deli','hangai','india','15000'),('C013','theo','uba','niger','nigeria','6000'),('C012','sarah','masaka','nairobi','kenya','2000');
+Query OK, 5 rows affected, 5 warnings (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 5
+
+mysql> update client_master set bal_due='RS.5100' where clientNO='C123';
+Query OK, 5 rows affected, 1 warning (0.00 sec)
+Rows matched: 5  Changed: 5
+
+
+
+
+part B
+QUESTION6
+
+mysql> create table employees (E_id int(12)not null,employee_name varchar(123),empolyee_department varchar(123),E_emailadress varchar(123),employee_salary varchar(123));
+Query OK, 0 rows affected, 1 warning (0.02 sec)
+
+mysql> insert into employees values('1','mutoni ','human_resources','mutoni@gmail.com','rwf5000'),('2','alice','sales&marketing','alice@gmail.com','rwf3993'),('3','danny','human_resources','danny@gmail.com','rwf50000'),('4','amina','ICT','ami@gmail.com','rwf50000'),('5','peter','production','pete@gmail.com','rwf40000');
+Query OK, 5 rows affected (0.02 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+
+mysql> create table employees (E_id int(12)not null,employee_name varchar(123),empolyee_department varchar(123),E_emailadress varchar(123),employee_salary varchar(123));
+Query OK, 0 rows affected, 1 warning (0.02 sec)
+
+mysql> insert into employees values('1','mutoni ','human_resources','mutoni@gmail.com','rwf5000'),('2','alice','sales&marketing','alice@gmail.com','rwf3993'),('3','danny','human_resources','danny@gmail.com','rwf50000'),('4','amina','ICT','ami@gmail.com','rwf50000'),('5','peter','production','pete@gmail.com','rwf40000');
+Query OK, 5 rows affected (0.02 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+QUESTION 7
+
+mysql> create table student(studentid varchar(5),fullnames varchar(25),gender varchar(6),age int(2),department varchar(30));
+Query OK, 0 rows affected, 1 warning (0.02 sec)
+
+mysql> insert into student values('1','mutesi benithe','f','20','bit'),('2','muhirwa charles','m','19','acc'),('3','munezero thomas','m','21','bit'),('4','kaline lea','f','18','fina');
+Query OK, 4 rows affected (0.00 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select*from student where gender='f';
++-----------+----------------+--------+------+------------+
+| studentid | fullnames      | gender | age  | department |
++-----------+----------------+--------+------+------------+
+| 1         | mutesi benithe | f      |   20 | bit        |
+| 4         | kaline lea     | f      |   18 | fina       |
++-----------+----------------+--------+------+------------+
+2 rows in set (0.00 sec)
+
+mysql> select* from student where gender='m';
++-----------+-----------------+--------+------+------------+
+| studentid | fullnames       | gender | age  | department |
++-----------+-----------------+--------+------+------------+
+| 2         | muhirwa charles | m      |   19 | acc        |
+| 3         | munezero thomas | m      |   21 | bit        |
++-----------+-----------------+--------+------+------------+
+2 rows in set (0.00 sec)
+
+
+QUESTION9
+
+mysql> create table empolyeees(Employee_id int(10),first_name varchar(23),last_name varchar(23),email varchar(123),phone_number int(10),hire_date varchar(123),job_id int(12),salary varchar(123),commission_pct varchar(23),manager_id int(5),department_id int(5));
+Query OK, 0 rows affected, 5 warnings (0.02 sec)
+
+mysql> insert into empolyeees values('1','kalisa','daniel','daniel@gmsil.com','0789654321','02/01/2024','22','rwf5000','10%','100','80');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into empolyeees values('2','munezero','david','davi@gmail.com','0791068354','01/08/2024','012','rwf10000','5%','103','50'),('3','gahima','angle','angle@gmail.com','0785459217','03/03/2024','013','rwf 15000','10%','102','60');
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select *from employee_id,first_name,last_name,salary;
+ERROR 1146 (42S02): Table 'employeees.employee_id' doesn't exist
+mysql> select* from empolyeees;
++-------------+------------+-----------+------------------+--------------+------------+--------+-----------+----------------+------------+---------------+
+| Employee_id | first_name | last_name | email            | phone_number | hire_date  | job_id | salary    | commission_pct | manager_id | department_id |
++-------------+------------+-----------+------------------+--------------+------------+--------+-----------+----------------+------------+---------------+
+|           1 | kalisa     | daniel    | daniel@gmsil.com |    789654321 | 02/01/2024 |     22 | rwf5000   | 10%            |        100 |            80 |
+|           2 | munezero   | david     | davi@gmail.com   |    791068354 | 01/08/2024 |     12 | rwf10000  | 5%             |        103 |            50 |
+|           3 | gahima     | angle     | angle@gmail.com  |    785459217 | 03/03/2024 |     13 | rwf 15000 | 10%            |        102 |            60 |
++-------------+------------+-----------+------------------+--------------+------------+--------+-----------+----------------+------------+---------------+
+3 rows in set (0.00 sec)
+
+mysql> select* from empolyeees where manager_id='100';
++-------------+------------+-----------+------------------+--------------+------------+--------+---------+----------------+------------+---------------+
+| Employee_id | first_name | last_name | email            | phone_number | hire_date  | job_id | salary  | commission_pct | manager_id | department_id |
++-------------+------------+-----------+------------------+--------------+------------+--------+---------+----------------+------------+---------------+
+|           1 | kalisa     | daniel    | daniel@gmsil.com |    789654321 | 02/01/2024 |     22 | rwf5000 | 10%            |        100 |            80 |
++-------------+------------+-----------+------------------+--------------+------------+--------+---------+----------------+------------+---------------+
+1 row in set (0.00 sec)
+
+mysql> select first_name,last_name from empolyeees where salary>='4800';
++------------+-----------+
+| first_name | last_name |
++------------+-----------+
+| kalisa     | daniel    |
+| munezero   | david     |
+| gahima     | angle     |
++------------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> select * from empolyees where last_name='austin';
+ERROR 1146 (42S02): Table 'employeees.empolyees' doesn't exist
+mysql> select * from empolyeees where last_name='austin';
+Empty set (0.00 sec)
+
+mysql> select first_name,last_name from empolyeees where department_id='60','70','80';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ','70','80'' at line 1
+mysql> select first_name,last_name from empolyeees where department_id='60,70,80';
++------------+-----------+
+| first_name | last_name |
++------------+-----------+
+| gahima     | angle     |
++------------+-----------+
+1 row in set, 1 warning (0.00 sec)
+
+
+QUESTION 10
+
+mysql> create table sales(salen0 int (5),salesname varchar(12),branch varchar(120),salesamount varchar(123),DOB varchar(23);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> create table sales(salen0 int (5),salesname varchar(12),branch varchar(120),salesamount varchar(123),DOB varchar(23);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> create table sales(salen0 int (5),salesname varchar(12),branch varchar(120),salesamount varchar(123),DOB varchar(23));
+Query OK, 0 rows affected, 1 warning (0.02 sec)
+
+mysql> insert into sales values('01','deo','kayonza','rwf5000','21-dec-09');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into sales values('02','denny','kigali','rwf1000','12-aug-09'),('03','emma','nyanza','rwf4000','01-aug-09'),('04','alice','huye','rwf6000','03-march-09'),('05','chary','kigali','rwf7000','04-apri-09);
+    '> insert into sales values('02','denny','kigali','rwf1000','12-aug-09'),('03','emma','nyanza','rwf4000','01-aug-09'),('04','alice','huye','rwf6000','03-march-09'),('05','chary','kigali','rwf7000','04-apri-09);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '02','denny','kigali','rwf1000','12-aug-09'),('03','emma','nyanza','rwf4000','01-' at line 2
+mysql> insert into sales values('02','denny','kigali','rwf1000','12-aug-09');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into sales values('03','emma','nyanza','rwf4000','01-aug-09');
+Query OK, 1 row affected (0.00 sec)
+
+mmysql> insert into sales values,('04','alice','huye','rwf6000','03-march-09');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',('04','alice','huye','rwf6000','03-march-09')' at line 1
+mysql> insert into sales values('04','alice','huye','rwf6000','03-march-09');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into sales values('05','chary','kigali','rwf7000','04-apri-09');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select*from sales;
++--------+-----------+---------+-------------+-------------+
+| salen0 | salesname | branch  | salesamount | DOB         |
++--------+-----------+---------+-------------+-------------+
+|      1 | deo       | kayonza | rwf5000     | 21-dec-09   |
+|      2 | denny     | kigali  | rwf1000     | 12-aug-09   |
+|      3 | emma      | nyanza  | rwf4000     | 01-aug-09   |
+|      4 | alice     | huye    | rwf6000     | 03-march-09 |
+|      5 | chary     | kigali  | rwf7000     | 04-apri-09  |
++--------+-----------+---------+-------------+-------------+
+5 rows in set (0.00 sec)
+
+
+
